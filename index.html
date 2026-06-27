@@ -1,275 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Nifty Expert</title>
-    <style>
-        :root {
-            --bg-top: #0e2920;
-            --bg-bottom: #05100c;
-            --card-bg: #112c22;
-            --card-border: #1d4635;
-            --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --accent-green: #34d399;
-            --cta-gradient: linear-gradient(90deg, #2dd4bf, #4ade80);
-            --ad-gradient: linear-gradient(90deg, #7c3aed, #ec4899);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero to Hero Calls</title>
+<style>
+  :root {
+    --bg-gray: #9ca3af;
+    --card-bg: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --telegram-blue: #0088cc;
+    --btn-dark: #0f172a;
+    --border-light: #e5e7eb;
+    --highlight-blue: #eff6ff;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-        body {
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
 
-        .container {
-            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
-            width: 100%;
-            max-width: 400px;
-            border-radius: 24px;
-            padding: 24px 20px;
-            color: var(--text-main);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #1a3a2a;
-        }
+  .card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 40px;
+    padding: 40px 24px 30px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-        /* Top Badge */
-        .top-badge {
-            background-color: rgba(17, 44, 34, 0.5);
-            border: 1px solid var(--card-border);
-            color: var(--accent-green);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            width: fit-content;
-            margin: 0 auto 30px auto;
-        }
+  /* Logo Approximation */
+  .logo-container {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
 
-        /* IMG-20260625-WA0038.jpg */
-        .logo-container {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1e3a8a, #0f172a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid var(--accent-green);
-            box-shadow: 0 0 25px rgba(52, 211, 153, 0.3);
-            position: relative;
-        }
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 
-        .logo-container::after {
-            content: "📈 BankNifty";
-            position: absolute;
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            bottom: 25px;
-            text-align: center;
-            line-height: 1.2;
-        }
+  /* Buttons */
+  .btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+  }
 
-        /* Titles */
-        .title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-        
-        .title .highlight {
-            color: var(--accent-green);
-        }
+  .btn:active {
+    transform: scale(0.98);
+  }
 
-        .subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            padding: 0 10px;
-        }
+  .btn-telegram {
+    background-color: var(--telegram-blue);
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 136, 204, 0.4);
+    margin-bottom: 20px;
+  }
 
-        /* Stats Cards */
-        .stats-grid {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+  .btn-dark {
+    background-color: var(--btn-dark);
+    color: white;
+    margin-top: 10px;
+  }
 
-        .stat-card {
-            flex: 1;
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 15px 10px;
-            text-align: center;
-        }
+  /* Active Members Pill */
+  .members-badge {
+    background-color: var(--highlight-blue);
+    color: #374151;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
 
-        .stat-card h3 {
-            color: var(--accent-green);
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
+  .members-badge strong {
+    color: var(--telegram-blue);
+    font-weight: 700;
+    font-size: 15px;
+  }
 
-        .stat-card p {
-            color: var(--text-muted);
-            font-size: 12px;
-        }
+  /* Features List */
+  .features-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
 
-        /* Categories Grid */
-        .category-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border: 1px solid var(--border-light);
+    border-radius: 30px;
+    background-color: #fcfcfc;
+  }
 
-        .category-btn {
-            background-color: rgba(17, 44, 34, 0.4);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-main);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
+  .feature-icon {
+    font-size: 24px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+  }
 
-        /* CTA Button */
-        .cta-btn {
-            width: 100%;
-            background: var(--cta-gradient);
-            color: #064e3b;
-            border: none;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 16px;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
-        }
+  .feature-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 4px;
+  }
 
-        /* Features List */
-        .features-box {
-            background-color: rgba(17, 44, 34, 0.4);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
+  .feature-content p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
 
-        .features-box ul {
-            list-style: none;
-        }
+  .sebi-text {
+    font-family: Georgia, serif;
+    font-weight: 600;
+  }
 
-        .features-box li {
-            font-size: 14px;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            line-height: 1.5;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            text-align: center;
-            justify-content: center;
-        }
+  /* Footer */
+  .footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+    background-color: #f3f4f6;
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
 
-        .features-box li:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Bottom Ad Banner */
-        .ad-banner {
-            background: var(--ad-gradient);
-            border-radius: 16px;
-            padding: 18px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .ad-banner .highlight {
-            color: #c7d2fe;
-        }
-    </style>
+  .footer span {
+    color: #ea580c; /* Orange */
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="top-badge">
-            SEBI Registered Research Analyst
-        </div>
-
-        <div class="logo-container"></div>
-
-        <h1 class="title">BANK NIFTY <span class="highlight">EXPERT</span></h1>
-        <p class="subtitle">Fast & Accurate Market Analysis • Nifty •<br>Bank Nifty • Options Trading</p>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>60K+</h3>
-                <p>Members</p>
-            </div>
-            <div class="stat-card">
-                <h3>SEBI</h3>
-                <p>Registered</p>
-            </div>
-            <div class="stat-card">
-                <h3>FREE</h3>
-                <p>Join</p>
-            </div>
-        </div>
-
-        <div class="category-grid">
-            <div class="category-btn">📈 Nifty Calls</div>
-            <div class="category-btn">🏦 Bank Nifty</div>
-            <div class="category-btn">💹 Finnifty</div>
-            <div class="category-btn">📊 Swing Trades</div>
-        </div>
-
-        <button class="cta-btn">
-            🚀 JOIN TELEGRAM FREE
-        </button>
-
-        <div class="features-box">
-            <ul>
-                <li>🔥 Daily Market Research & High Probability Trade Setups</li>
-                <li>⚡ Bank Nifty • Nifty • Options Trading Signals</li>
-                <li>🚀 Trusted by 60,000+ Traders</li>
-            </ul>
-        </div>
-
-        <div class="ad-banner">
-            🔥 AD BAY <span class="highlight"> ASHU BHAI </span> 🚀 
-        </div>
+  <div class="card">
+    
+    <div class="logo-container">
+      📈
     </div>
+
+    <h1 class="title">Hero to Hero Calls</h1>
+
+    <a href="#" class="btn btn-telegram">
+      📲 Join Telegram Channel
+    </a>
+
+    <div class="members-badge">
+      👥 Active Members: <strong>62,721</strong>
+    </div>
+
+    <div class="features-list">
+      
+      <div class="feature-item">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-content">
+          <h3>Nifty, Banknifty, Sensex Calls</h3>
+          <p>95%+ Win Rate • <span class="sebi-text">(SEBI REGISTERED)</span></p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-content">
+          <h3>Risk Management</h3>
+          <p>Secure & Disciplined • Capital Protection</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-content">
+          <h3>Real-time Delivery</h3>
+          <p>Instant Alerts • Live Market Feed</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">💎</div>
+        <div class="feature-content">
+          <h3>Expert Support 24/7</h3>
+          <p>Dedicated Assistance • Query Resolution</p>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="#" class="btn btn-dark">
+      🔥 Join Now & Start Winning 🔥
+    </a>
+
+    <div class="footer">
+      This ad setup by <span>Adswiftly</span>
+    </div>
+
+  </div>
 
 </body>
 </html>
