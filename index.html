@@ -1,133 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satta Matka Banner Replica</title>
-    <style>
-        body {
-            background-color: #0f172a; /* Dark background */
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: white;
-        }
-        .banner-container {
-            width: 400px;
-            background-color: #1a365d; /* Dark blue background matching image */
-            border: 3px solid #facc15; /* Yellow border */
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .top-header {
-            background-color: #dc2626; /* Red top bar */
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-            font-size: 18px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            text-transform: uppercase;
-        }
-        .profile-container {
-            margin-bottom: 15px;
-        }
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-        }
-        .title-box {
-            background-color: white;
-            color: black;
-            font-weight: bold;
-            font-size: 24px;
-            padding: 8px 25px;
-            display: inline-block;
-            border: 2px solid black;
-            margin-bottom: 20px;
-        }
-        .telegram-btn {
-            background-color: #2563eb; /* Telegram Blue */
-            border: 3px solid #facc15; /* Yellow border */
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 12px;
-            border-radius: 30px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-            transition: transform 0.2s;
-        }
-        .telegram-btn:hover {
-            transform: scale(1.03);
-        }
-        .info-box {
-            background-color: #ea580c; /* Orange/Red middle box */
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            line-height: 1.8;
-            margin: 15px 0;
-            font-weight: bold;
-        }
-        .features-list {
-            text-align: left;
-            margin: 25px 10px;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-    </style>
-</head>
-<body>
+import telebot
 
-    <div class="banner-container">
-        <div class="top-header">India's best SATTA MATKA CHANNEL</div>
-        
-        <div class="profile-container">
-            <!-- Replace image link with your own profile image -->
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Profile" class="profile-img">
-        </div>
-        
-        <div class="title-box">तकदीर का बादशाह</div>
-        
-        <a href="https://t.me/YourChannel" target="_blank" class="telegram-btn">
-            <span>✈️</span> JOIN TELEGRAM CHANNEL <span>✈️</span>
-        </a>
-        
-        <div class="info-box">
-            @ कल्याण @ टाइम बाजार @ श्रीदेवी @ मिलन डे <br>
-            @ कल्याण [ नाईट ] @ राजधानी [ नाईट ] @ मेन बाजार
-        </div>
-        
-        <div class="features-list">
-            <div class="feature-item">🎯 <span>FIX OPEN, CLOSE, JODI AND PANEL...</span></div>
-            <div class="feature-item">🔥 <span>ALL MATKA GAME AVAILABLE</span></div>
-            <div class="feature-item">💫 <span>DAILY 5-7 GAME PASS BY OUR EXPERT</span></div>
-            <div class="feature-item">✅ <span>1001% game ki guarantee</span></div>
-        </div>
-        
-        <a href="https://t.me/YourChannel" target="_blank" class="telegram-btn">
-            <span>✈️</span> JOIN TELEGRAM CHANNEL <span>✈️</span>
-        </a>
-    </div>
+# 1. अपना Telegram Bot Token यहाँ डालें (जो BotFather से मिलता है)
+BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'
+bot = telebot.TeleBot(BOT_TOKEN)
 
-</body>
-</html>
+# जब कोई यूजर /start या /help लिखेगा, तो यह मैसेज जाएगा
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+    banner_text = """
+👑 **तकदीर का बादशाह** 👑
+────────────────ℹ️
+@ कल्याण @ टाइम बाजार @ श्रीदेवी @ मिलन डे
+@ कल्याण [ नाईट ] @ राजधानी [ नाईट ] @ मेन बाजार
+────────────────ℹ️
+🎯 **FIX OPEN, CLOSE, JODI AND PANEL...**
+🔥 **ALL MATKA GAME AVAILABLE**
+💫 **DAILY 5-7 GAME PASS BY OUR EXPERT**
+✅ **1001% game ki guarantee**
+
+👉 हमारे मेन चैनल को ज्वाइन करने के लिए यहाँ क्लिक करें:
+https://t.me/Your_Channel_Username
+    """
+    bot.reply_to(message, banner_text, parse_mode='Markdown')
+
+# बॉट को चालू रखने के लिए
+print("बॉट चालू हो गया है...")
+bot.infinity_polling()
